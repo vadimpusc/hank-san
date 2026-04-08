@@ -1,0 +1,1 @@
+function r(n){return n?`https://www.youtube-nocookie.com/embed/${n.id}?rel=0&modestbranding=1`:""}function e(n){return n!=null&&n.thumbnail?n.thumbnail:"/stills/placeholder.jpg"}export{r as e,e as g};

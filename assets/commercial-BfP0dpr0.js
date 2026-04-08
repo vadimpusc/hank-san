@@ -1,0 +1,1 @@
+const o=[{slug:"bang-mi-town",title:"Bang Me Town",credit:"Director",director:"Hank Orion",client:"Bang Me Town",prodCompany:"San Roku Ku",year:"2026",platform:"youtube",id:"",thumbnail:"",description:""}];export{o as c};
