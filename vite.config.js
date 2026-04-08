@@ -14,6 +14,11 @@ export default defineConfig({
         commercial: resolve(__dirname, 'commercial/index.html'),
         contact: resolve(__dirname, 'contact/index.html'),
         watch: resolve(__dirname, 'watch/index.html'),
+      },
+      output: {
+        entryFileNames: 'assets/entry-[hash].js',
+        chunkFileNames: 'assets/chunk-[hash].js',
+        assetFileNames: 'assets/file-[hash][extname]'
       }
     }
   }
