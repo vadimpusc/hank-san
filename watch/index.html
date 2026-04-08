@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Watch Video | Hank Orion</title>
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (!t) {
+            t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {
+          /* ignore */
+        }
+      })();
+    </script>
+    <script type="application/ld+json" id="schema-dynamic"></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/entries/watch.js"></script>
+  </body>
+</html>

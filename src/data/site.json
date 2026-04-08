@@ -1,0 +1,44 @@
+{
+  "name": "Hank Orion",
+  "tagline": "Director | Screenwriter | Producer",
+  "location": "London, Kyoto",
+  "baseUrl": "https://example.com",
+  "email": "hank@hankorion.com",
+  "social": {
+    "facebook": "https://facebook.com/HankOrion",
+    "instagram": "https://instagram.com/HankOrion",
+    "youtube": "https://youtube.com/channel/UCgOt1ywVc-aAe5zLBFjHtww",
+    "imdb": "https://www.imdb.com/name/nm7745316/"
+  },
+  "demoReel": {
+    "platform": "youtube",
+    "id": "t15pLMzf-Wc",
+    "title": "Demo Reel",
+    "description": "Selected work across narrative and commercial."
+  },
+"seo": {
+  "brand": "Hank Orion | Film Director & Screenwriter Portfolio",
+  "keywords": [
+    "Hank Orion",
+    "film director portfolio",
+    "screenwriter portfolio",
+    "independent filmmaker",
+    "film director Europe",
+    "film director UK",
+    "director Japan Europe",
+    "screenwriter films",
+    "narrative filmmaker",
+    "commercial film director",
+    "cinematic storytelling",
+    "film production director",
+    "indie film director",
+    "award winning filmmaker",
+    "film director London",
+    "film director Japan",
+    "short film director",
+    "feature film director",
+    "film director for hire",
+    "director showreel"
+  ]
+}
+}
