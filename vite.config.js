@@ -3,7 +3,7 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { resolve } from 'node:path';
 
 export default defineConfig({
-  base: './',
+  base: '/',
   plugins: [svelte()],
   build: {
     rollupOptions: {
