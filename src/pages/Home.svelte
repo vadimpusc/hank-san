@@ -3,19 +3,14 @@
   import Layout from '../components/Layout.svelte';
   import VideoGrid from '../components/VideoGrid.svelte';
   import VideoModal from '../components/VideoModal.svelte';
-  import PhotoGrid from '../components/PhotoGrid.svelte';
-  import { embedUrl, getThumbnail } from '../components/video';
+
+  import { embedUrl } from '../components/video';
   import { setDynamicSchema, siteUrl } from '../components/seo';
 
   import site from '../data/site.json';
   import narrative from '../data/narrative.json';
   import commercial from '../data/commercial.json';
 
-  const stills = [...narrative, ...commercial].map(item => ({
-    ...item,
-    src: getThumbnail(item),
-    alt: item.title
-  }));
 
   function shuffleArray(arr) {
     const shuffled = [...arr];
@@ -120,13 +115,6 @@
 
   <div class="spacer"></div>
 
-  <section>
-    <div class="sectionHead">
-      <h2>Stills from Recent Productions</h2>
-      <div class="small">Select frames from recent projects.</div>
-    </div>
-    <PhotoGrid items={stills} />
-  </section>
 
   <VideoModal item={picked} open={modalOpen} onClose={close} />
 </Layout>
@@ -160,12 +148,13 @@
 
   .spacer{height:28px;}
 
-  .profileImg{display:none;}
+  .profileImg{margin-bottom:28px;}
+  .profileImg img{width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:16px;}
 
   @media(max-width: 1024px){
     .hero{grid-template-columns: 1fr;}
     .profileImg{display:block; margin-bottom:20px;}
-    .profileImg img{width:100%; height:320px; object-fit:cover; border-radius:12px;}
+    .profileImg img{width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px;}
     .spacer{height:20px;}
   }
 </style>

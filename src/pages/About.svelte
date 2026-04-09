@@ -1,9 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import Layout from '../components/Layout.svelte';
-  import PhotoGrid from '../components/PhotoGrid.svelte';
   import { setDynamicSchema, siteUrl } from '../components/seo';
-  import { getThumbnail } from '../components/video';
 
   import site from '../data/site.json';
   import commercial from '../data/commercial.json';
@@ -13,14 +11,13 @@
     project: item.title,
     role: item.credit,
     director: item.director,
-    year: item.year
+    year: item.year,
+    genre: item.genre,
+    prodCompany: item.prodCompany,
+    workType: item.workType
   })).sort((a, b) => b.year - a.year);
 
-  const stills = [...narrative, ...commercial].map(item => ({
-    ...item,
-    src: getThumbnail(item),
-    alt: item.title
-  }));
+  const years = [...new Set(credits.map(c => c.year))];
 
   onMount(() => {
     setDynamicSchema({
@@ -40,7 +37,7 @@
     <div class="kicker">About</div>
     <h2>Story-first filmmaking with a premium finish.</h2>
     <p>
-      I'm a writer, director and producer based between London and Kyoto, and the founder of San Roku Ku, a production studio focused on international storytelling.
+      I'm a writer, director and producer based between London and Kyoto, and the founder of <a href="https://sanrokuku.com" target="_blank" rel="noreferrer">San Roku Ku</a>, a production studio focused on international storytelling.
     </p>
     <p>
       I collaborate with producers, brands, and artists to create work that feels crafted and human.
@@ -56,53 +53,58 @@
     </div>
   </section>
 
-  <div class="spacer"></div>
-
-  <section>
-    <div class="sectionHead">
-      <h2>Stills</h2>
-      <div class="small">Frames and textures.</div>
-    </div>
-    <PhotoGrid items={stills} />
-  </section>
 
   <div class="spacer"></div>
 
   <section>
-    <div class="sectionHead">
-      <h2>Credits</h2>
-    </div>
-    <div class="list">
-      {#each credits as c}
-        <div class="row">
-          <div class="proj">{c.project}</div>
-          <div class="meta">
-            <span class="role">{c.role}</span>
-            <span class="dot">•</span>
-            <span>{c.director}</span>
-            <span class="dot">•</span>
-            <span>{c.year}</span>
-          </div>
+    <h2 class="sectionTitle">Credits</h2>
+    {#each years as year}
+      <div class="yearGroup">
+        <div class="year">{year}</div>
+        <div class="list">
+          {#each credits.filter(c => c.year === year) as c}
+            <div class="row">
+              <div class="proj">{c.project}</div>
+              <div class="meta">
+                <span class="role">{c.role}</span>
+                {#if c.workType}<span class="sep">—</span><span class="workType">{c.workType}</span>{/if}
+                {#if c.genre}<span class="sep">—</span><span class="genre">{c.genre}</span>{/if}
+                {#if c.prodCompany}<span class="sep">—</span><span class="company">{c.prodCompany}</span>{/if}
+              </div>
+            </div>
+          {/each}
         </div>
-      {/each}
-    </div>
+      </div>
+    {/each}
   </section>
 </Layout>
 
 <style>
   .copy p{color:var(--muted); font-weight:450; max-width:62ch;}
+  .copy a{color:var(--text); text-decoration:underline;}
 
-  .contactLine{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;}
+  .spacer{height:48px;}
 
-  .list{display:flex; flex-direction:column; gap:14px;}
+  .yearGroup{margin-bottom:24px;}
+  .year{font-size:24px; font-weight:600; margin-bottom:12px; color:var(--text);}
 
-  .row{padding-bottom:12px;}
+  .list{display:flex; flex-direction:column; gap:12px;}
+
+  .row{display:flex; gap:16px; align-items:baseline;}
   .row:last-child{padding-bottom:0;}
 
-  .proj{font-weight:600;}
-  .meta{margin-top:4px; color:var(--muted); font-size:14px; font-weight:450;}
-  .dot{margin:0 6px;}
+  .proj{font-weight:600; min-width:200px;}
+  .meta{color:var(--muted); font-size:14px; font-weight:450;}
+  .role{color:var(--text);}
+  .sep{margin:0 8px; opacity:0.5;}
+  .genre, .workType{opacity:0.7;}
+  .company{opacity:0.5;}
 
-  .sectionHead{display:flex; justify-content:space-between; align-items:flex-end; gap:14px; margin-bottom:12px;}
-  .spacer{height:28px;}
+  .sectionTitle{font-size:20px; margin-bottom:20px;}
+
+  @media(max-width: 640px){
+    .row{flex-direction:column; gap:4px;}
+    .proj{min-width:auto;}
+    .spacer{height:32px;}
+  }
 </style>

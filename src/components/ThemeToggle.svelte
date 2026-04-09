@@ -49,16 +49,16 @@
 
 <style>
   .toggle{
-    width:40px;
-    height:40px;
+    width:46px;
+    height:46px;
     border:0;
-    border-radius:999px;
+    border-radius:12px;
     background:transparent;
     color:var(--text);
     display:grid;
     place-items:center;
     cursor:pointer;
-    font-size:18px;
+    font-size:22px;
     line-height:1;
     opacity:0.9;
   }

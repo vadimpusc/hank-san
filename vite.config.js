@@ -14,6 +14,7 @@ export default defineConfig({
         commercial: resolve(__dirname, 'commercial/index.html'),
         contact: resolve(__dirname, 'contact/index.html'),
         watch: resolve(__dirname, 'watch/index.html'),
+        '404': resolve(__dirname, '404.html'),
       },
       output: {
         entryFileNames: 'assets/entry-[hash].js',

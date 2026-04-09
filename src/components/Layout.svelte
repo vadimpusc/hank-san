@@ -23,7 +23,17 @@
   function close() {
     open = false;
   }
+
+  function handleKeydown(e) {
+    if (e.key === 'Escape' && open) close();
+  }
+
+  function handleBackdropClick(e) {
+    if (e.target === e.currentTarget) close();
+  }
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <div class="shell">
   <div class="themeCorner" aria-hidden="false">
@@ -51,7 +61,7 @@
         {#if site.social?.youtube}<a href={site.social.youtube} target="_blank" rel="noreferrer" aria-label="YouTube">YT</a>{/if}
         {#if site.social?.imdb}<a href={site.social.imdb} target="_blank" rel="noreferrer" aria-label="IMDb">IMDb</a>{/if}
       </div>
-      <div class="small"><a href="https://sanrokuku.com/" target="_blank" rel="noreferrer">By San Roku Ku</a></div>
+      <div class="small"><a href="https://sanrokuku.com/" target="_blank" rel="noreferrer">Design by San Roku Ku</a></div>
     </div>
   </aside>
 
@@ -66,7 +76,7 @@
   </header>
 
   {#if open}
-    <div class="drawer" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="drawer" role="dialog" aria-modal="true" aria-label="Menu" on:click={handleBackdropClick}>
       <div class="drawerInner">
         <div class="drawerTop">
           <div>
@@ -82,6 +92,15 @@
             <a class:selected={active === item.href} href={item.href} on:click={close}>{item.label}</a>
           {/each}
         </nav>
+        <div class="drawerFoot">
+          <div class="social">
+            {#if site.social?.facebook}<a href={site.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">FB</a>{/if}
+            {#if site.social?.instagram}<a href={site.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">IG</a>{/if}
+            {#if site.social?.youtube}<a href={site.social.youtube} target="_blank" rel="noreferrer" aria-label="YouTube">YT</a>{/if}
+            {#if site.social?.imdb}<a href={site.social.imdb} target="_blank" rel="noreferrer" aria-label="IMDb">IMDb</a>{/if}
+          </div>
+          <div class="small"><a href="https://sanrokuku.com/" target="_blank" rel="noreferrer">Design by San Roku Ku</a></div>
+        </div>
       </div>
     </div>
   {/if}
@@ -96,6 +115,7 @@
     display:grid;
     grid-template-columns: 300px 1fr;
     min-height:100vh;
+    align-content:start;
   }
 
   .sidebar{
@@ -198,6 +218,9 @@
   .drawerInner{
     max-width:520px;
     padding:26px;
+    height:100%;
+    display:flex;
+    flex-direction:column;
   }
 
   .drawerTop{display:flex; justify-content:space-between; align-items:flex-start; gap:20px;}
@@ -225,6 +248,9 @@
 
   .drawerNav a.selected{opacity:0.6;}
 
+  .drawerFoot{margin-top:auto; padding-top:32px;}
+  .drawerFoot .social{margin-bottom:12px;}
+
   @media (max-width: 1024px){
     .shell{grid-template-columns: 1fr;}
     .sidebar{display:none;}
@@ -239,6 +265,12 @@
       backdrop-filter:saturate(160%) blur(10px);
       z-index:40;
     }
+    .mobileBrand{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      text-align:center;
+    }
     .mobileBrand .brandTitle{font-size:22px;}
     .mobileBrand .brandSub{font-size:12px;}
     .main{padding:22px 18px 44px;}
@@ -246,6 +278,7 @@
     .themeCorner{
       top:12px;
       right:12px;
+      margin-left:20px;
     }
   }
 </style>

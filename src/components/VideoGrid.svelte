@@ -3,7 +3,6 @@
 
   export let items = [];
   export let onPick = (item) => {};
-  let hovered = null;
 </script>
 
 <div class="grid" role="list">
@@ -13,14 +12,10 @@
       type="button" 
       role="listitem" 
       on:click={() => onPick(item)}
-      on:mouseenter={() => hovered = item.slug}
-      on:mouseleave={() => hovered = null}
       aria-label={item.title}
     >
       <img src={getThumbnail(item)} alt={item.title} loading="lazy" />
-      {#if hovered === item.slug}
-        <div class="title-overlay">{item.title}</div>
-      {/if}
+      <div class="title-overlay">{item.title}</div>
     </button>
   {/each}
 </div>
@@ -47,11 +42,12 @@
     height:100%;
     aspect-ratio: 16/10;
     object-fit:cover;
-    transform:scale(1);
-    transition:transform 180ms ease;
+    transition:transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .tile:hover img{transform:scale(1.02);}
+  @media (min-width: 901px){
+    .tile:hover img{transform:scale(1.02);}
+  }
 
   .title-overlay{
     position:absolute;
