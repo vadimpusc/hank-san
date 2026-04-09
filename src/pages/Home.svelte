@@ -105,13 +105,10 @@
   <div class="spacer"></div>
 
   <section>
-    <div class="sectionHead">
       <h2>Recent Narrative & Commercial Work</h2>
-      <div class="small">Tap any frame to watch.</div>
-    </div>
 
-    <VideoGrid items={featured} onPick={pick} />
-  </section>
+      <VideoGrid items={featured} onPick={pick} />
+    </section>
 
   <div class="spacer"></div>
 

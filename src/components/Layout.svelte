@@ -44,7 +44,11 @@
     <div class="brand">
       <a class="brandLink" href="/" aria-label="Home">
         <div class="brandTitle">{title}</div>
-        <div class="brandSub">{subtitle}</div>
+        <div class="brandSub">
+          {#each subtitle.split(' ') as word}
+            <span>{word}</span>
+          {/each}
+        </div>
       </a>
     </div>
 
@@ -68,7 +72,11 @@
   <header class="mobileTop">
     <a class="mobileBrand" href="/" aria-label="Home">
       <div class="brandTitle">{title}</div>
-      <div class="brandSub">{subtitle}</div>
+      <div class="brandSub">
+        {#each subtitle.split(' ') as word}
+          <span>{word}</span>
+        {/each}
+      </div>
     </a>
     <button class="burger" on:click={toggle} aria-label="Menu" aria-expanded={open}>
       <span></span><span></span>
@@ -79,12 +87,9 @@
     <div class="drawer" role="dialog" aria-modal="true" aria-label="Menu" on:click={handleBackdropClick}>
       <div class="drawerInner">
         <div class="drawerTop">
-          <div>
-            <div class="brandTitle">{title}</div>
-            <div class="brandSub">{subtitle}</div>
-          </div>
+          <div></div>
           <button class="close" on:click={close} aria-label="Close">
-            Close
+            ✕
           </button>
         </div>
         <nav class="drawerNav" aria-label="Mobile">
@@ -142,6 +147,7 @@
     font-weight:580;
     letter-spacing:-0.02em;
     line-height:1.05;
+    text-transform:uppercase;
   }
 
   .brandSub{
@@ -151,6 +157,23 @@
     letter-spacing:0.14em;
     text-transform:uppercase;
     color:var(--muted);
+  }
+
+  .brandSub span{display:block;}
+
+  @media (max-width: 1024px) and (min-width: 601px){
+    .brandSub{font-size:12px; letter-spacing:0.1em; line-height:1.6;}
+    .brandSub span{display:inline;}
+    .brandSub span + span::before{content:" | "; margin:0 4px; opacity:0.5;}
+  }
+
+  @media (max-width: 600px){
+    .brandSub{font-size:9px; letter-spacing:0.06em;}
+    .brandSub span{display:block; text-align:center;}
+  }
+
+  @media (max-width: 1024px){
+    .mobileBrand{padding-top:8px;}
   }
 
   .brandLink{display:inline-block;}
@@ -223,18 +246,19 @@
     flex-direction:column;
   }
 
-  .drawerTop{display:flex; justify-content:space-between; align-items:flex-start; gap:20px;}
+  .drawerTop{display:flex; align-items:flex-start; gap:20px;}
 
   .close{
+    width:46px;
+    height:46px;
     border:0;
     background:transparent;
-    border-radius:999px;
-    padding:10px 14px;
-    font-weight:520;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
     cursor:pointer;
-    text-decoration:underline;
-    text-underline-offset:6px;
-    text-decoration-thickness:1px;
+    font-size:20px;
+    color:var(--text);
   }
 
   .drawerNav{margin-top:24px; display:flex; flex-direction:column; gap:14px;}
