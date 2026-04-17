@@ -53,16 +53,16 @@
     height:46px;
     border:0;
     border-radius:12px;
-    background:transparent;
+    background:var(--panel);
     color:var(--text);
     display:grid;
     place-items:center;
     cursor:pointer;
     font-size:22px;
     line-height:1;
-    opacity:0.9;
+    box-shadow:var(--shadow);
   }
 
-  .toggle:hover{opacity:0.65;}
+  .toggle:hover{opacity:0.85;}
   .toggle:active{transform:translateY(1px);}
 </style>

@@ -37,7 +37,7 @@
     <div class="kicker">About</div>
     <h2>Story-first filmmaking with a premium finish.</h2>
     <p>
-      I'm a writer, director and producer based between London and Kyoto, and the founder of <a href="https://sanrokuku.com" target="_blank" rel="noreferrer">San Roku Ku</a>, a production studio focused on international storytelling.
+      I'm a writer, director and producer based between London and Kyoto.
     </p>
     <p>
       I collaborate with producers, brands, and artists to create work that feels crafted and human.

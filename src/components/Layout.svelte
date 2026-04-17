@@ -35,11 +35,27 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<div class="shell">
-  <div class="themeCorner" aria-hidden="false">
-    <ThemeToggle />
-  </div>
+<div class="themeCorner">
+  <ThemeToggle />
+</div>
 
+<header class="mobileTop">
+  <a class="mobileBrand" href="/" aria-label="Home">
+    <div class="brandTitle">{title}</div>
+    <div class="brandSub">
+      {#each subtitle.split(' ') as word}
+        <span>{word}</span>
+      {/each}
+    </div>
+  </a>
+  <div class="mobileControls">
+    <button class="burger" on:click={toggle} aria-label="Menu" aria-expanded={open}>
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="shell">
   <aside class="sidebar">
     <div class="brand">
       <a class="brandLink" href="/" aria-label="Home">
@@ -68,20 +84,6 @@
       <div class="small"><a href="https://sanrokuku.com/" target="_blank" rel="noreferrer">Design by San Roku Ku</a></div>
     </div>
   </aside>
-
-  <header class="mobileTop">
-    <a class="mobileBrand" href="/" aria-label="Home">
-      <div class="brandTitle">{title}</div>
-      <div class="brandSub">
-        {#each subtitle.split(' ') as word}
-          <span>{word}</span>
-        {/each}
-      </div>
-    </a>
-    <button class="burger" on:click={toggle} aria-label="Menu" aria-expanded={open}>
-      <span></span><span></span>
-    </button>
-  </header>
 
   {#if open}
     <div class="drawer" role="dialog" aria-modal="true" aria-label="Menu" on:click={handleBackdropClick}>
@@ -139,7 +141,6 @@
     top:18px;
     right:18px;
     z-index:60;
-    background:transparent;
   }
 
   .brandTitle{
@@ -222,13 +223,13 @@
 
   .burger span{
     display:block;
-    width:18px;
-    height:2px;
+    width:22px;
+    height:3px;
     background:var(--text);
     border-radius:2px;
   }
 
-  .burger span:last-child{margin-top:6px;}
+  .burger span + span{margin-top:5px;}
 
   .drawer{
     position:fixed;
@@ -278,13 +279,16 @@
   @media (max-width: 1024px){
     .shell{grid-template-columns: 1fr;}
     .sidebar{display:none;}
+    .mobileControls{display:flex; gap:12px; align-items:center;}
     .mobileTop{
       display:flex;
       justify-content:space-between;
       align-items:center;
-      padding:18px 18px;
-      position:sticky;
+      padding:36px 18px;
+      position:fixed;
       top:0;
+      left:0;
+      right:0;
       background:var(--overlay);
       backdrop-filter:saturate(160%) blur(10px);
       z-index:40;
@@ -297,12 +301,6 @@
     }
     .mobileBrand .brandTitle{font-size:22px;}
     .mobileBrand .brandSub{font-size:12px;}
-    .main{padding:22px 18px 44px;}
-
-    .themeCorner{
-      top:12px;
-      right:12px;
-      margin-left:20px;
-    }
+    .main{padding-top:90px; padding:90px 18px 44px;}
   }
 </style>

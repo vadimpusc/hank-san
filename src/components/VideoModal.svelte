@@ -14,6 +14,14 @@
     if (e.key === 'Escape') close();
   }
 
+  function hideAddressBar() {
+    setTimeout(() => {
+      window.scrollTo(0, 1);
+    }, 100);
+  }
+
+  $: if (open) hideAddressBar();
+
   onMount(() => {
     window.addEventListener('keydown', onKey);
   });
@@ -143,8 +151,14 @@
   .links{display:flex; gap:10px; padding:0 16px 18px;}
 
   @media(max-width: 700px){
+    .backdrop{align-items:flex-start; padding-top:40px;}
+    .panel{max-height:calc(100vh - 60px); overflow-y:auto; -webkit-overflow-scrolling:touch;}
+    .panel::-webkit-scrollbar{display:none;}
+    .panel{scrollbar-width:none;}
+    .links{justify-content:center;}
     .content{flex-direction:column;}
-    .poster{display:none;}
+    .poster{flex:none; width:100%; margin-bottom:12px;}
+    .poster img{aspect-ratio:2/3; width:100%;}
     .frame{flex:none;}
   }
 </style>
