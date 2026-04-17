@@ -4,18 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Contact | Filmmaker Portfolio</title>
+    <title>Contact Hank Orion | Film Director & Producer Bookings | London, Kyoto</title>
     <meta
       name="description"
-      content="Contact for availability, reels, and bookings."
+      content="Contact award-winning film director and producer Hank Orion for bookings, availability, collaborations, and inquiries. Based between London and Kyoto, available worldwide."
     />
     <link rel="canonical" href="https://hankorion.com/contact/" />
+    <meta name="robots" content="index, follow" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Contact | Filmmaker Portfolio" />
-    <meta property="og:description" content="Bookings, availability, and representation." />
+    <meta property="og:title" content="Contact Hank Orion | Film Director & Producer" />
+    <meta property="og:description" content="Contact for bookings, availability, and collaborations. Film director and producer based between London and Kyoto." />
     <meta property="og:url" content="https://hankorion.com/contact/" />
     <meta property="og:image" content="https://hankorion.com/og.jpg" />
+    <meta property="og:site_name" content="Hank Orion" />
 
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -34,12 +36,44 @@
         }
       })();
     </script>
+
     <script type="application/ld+json" id="schema-static">
       {
         "@context": "https://schema.org",
-        "@type": "ContactPage",
-        "name": "Contact",
-        "url": "https://hankorion.com/contact/"
+        "@graph": [
+          {
+            "@type": "ContactPage",
+            "name": "Contact Hank Orion",
+            "url": "https://hankorion.com/contact/",
+            "publisher": {
+              "@id": "https://hankorion.com/#person"
+            }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://hankorion.com/#person",
+            "name": "Hank Orion",
+            "url": "https://hankorion.com/",
+            "email": "hank@hankorion.com"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://hankorion.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Contact",
+                "item": "https://hankorion.com/contact/"
+              }
+            ]
+          }
+        ]
       }
     </script>
     <script type="application/ld+json" id="schema-dynamic"></script>

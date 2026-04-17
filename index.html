@@ -4,33 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Hank Orion | Film Director & Screenwriter | Narrative & Commercial Films</title>
+    <title>Hank Orion | Award-Winning Film Director & Screenwriter | London, Kyoto</title>
     <meta
       name="description"
-      content="Official portfolio of Hank Orion, film director and screenwriter. Explore narrative and commercial films, watch reels, browse stills, and view selected credits."
+      content="Official portfolio of Hank Orion, award-winning film director, screenwriter, and producer based between London and Kyoto. Explore narrative films, commercials, demo reels, and selected works from San Roku Ku production studio."
     />
+    <meta name="keywords" content="Hank Orion, film director, screenwriter, producer, London, Kyoto, narrative films, commercials, independent filmmaker, San Roku Ku" />
     <link rel="canonical" href="https://hankorion.com/" />
+    <meta name="robots" content="index, follow" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Hank Orion | Film Director & Screenwriter" />
-    <meta
-      property="og:description"
-      content="Official portfolio of Hank Orion featuring narrative and commercial films, reels, stills, and selected credits."
-    />
+    <meta property="og:description" content="Award-winning film director and screenwriter based between London and Kyoto. Explore narrative films, commercials, and demo reels." />
     <meta property="og:url" content="https://hankorion.com/" />
     <meta property="og:image" content="https://hankorion.com/og.jpg" />
+    <meta property="og:site_name" content="Hank Orion" />
+    <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Hank Orion | Film Director & Screenwriter" />
-    <meta
-      name="twitter:description"
-      content="Official portfolio of Hank Orion featuring narrative and commercial films, reels, stills, and selected credits."
-    />
+    <meta name="twitter:description" content="Award-winning film director and screenwriter based between London and Kyoto. Explore narrative films, commercials, and demo reels." />
     <meta name="twitter:image" content="https://hankorion.com/og.jpg" />
 
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://player.vimeo.com" />
     <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+    <link rel="alternate" type="application/rss+xml" title="Hank Orion Portfolio" href="/sitemap.xml" />
 
     <script>
       (function () {
@@ -52,18 +51,50 @@
         "@graph": [
           {
             "@type": "WebSite",
+            "@id": "https://hankorion.com/#website",
             "name": "Hank Orion",
-            "url": "https://hankorion.com/"
+            "url": "https://hankorion.com/",
+            "description": "Award-winning film director and screenwriter based between London and Kyoto.",
+            "publisher": {
+              "@id": "https://hankorion.com/#person"
+            }
           },
           {
             "@type": "Person",
+            "@id": "https://hankorion.com/#person",
             "name": "Hank Orion",
-            "jobTitle": "Film Director and Screenwriter",
             "url": "https://hankorion.com/",
+            "description": "Award-winning film director, screenwriter, and producer based between London and Kyoto.",
+            "jobTitle": "Film Director, Screenwriter, Producer",
+            "knowsAbout": ["Film Direction", "Screenwriting", "Film Production", "Cinematic Storytelling"],
+            "email": "hank@hankorion.com",
             "sameAs": [
-              "https://instagram.com/hankorion",
-              "https://facebook.com/hankorion",
+              "https://instagram.com/HankOrion",
+              "https://facebook.com/HankOrion",
+              "https://youtube.com/channel/UCgOt1ywVc-aAe5zLBFjHtww",
               "https://www.imdb.com/name/nm7745316/"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "London",
+              "addressCountry": "GB"
+            },
+            "worksFor": {
+              "@type": "Organization",
+              "name": "San Roku Ku",
+              "url": "https://sanrokuku.com"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://hankorion.com/#breadcrumbs",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://hankorion.com/"
+              }
             ]
           }
         ]

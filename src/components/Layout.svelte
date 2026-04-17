@@ -301,6 +301,6 @@
     }
     .mobileBrand .brandTitle{font-size:22px;}
     .mobileBrand .brandSub{font-size:12px;}
-    .main{padding-top:90px; padding:90px 18px 44px;}
+    .main{padding-top:120px; padding:120px 18px 44px;}
   }
 </style>

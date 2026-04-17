@@ -4,17 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Commercial | Filmmaker Portfolio</title>
+    <title>Commercial Films | Brand Videos & Ads by Hank Orion | London</title>
     <meta
       name="description"
-      content="Commercial work for brands, agencies, and production companies. Watch the video gallery." />
+      content="Commercial work by Hank Orion for brands, agencies, and production companies. View brand films, advertisements, and promotional videos from San Roku Ku production studio."
+    />
     <link rel="canonical" href="https://hankorion.com/commercial/" />
+    <meta name="robots" content="index, follow" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Commercial | Filmmaker Portfolio" />
-    <meta property="og:description" content="Commercial work for brands and agencies." />
+    <meta property="og:title" content="Commercial Films | Hank Orion" />
+    <meta property="og:description" content="Commercial work for brands, agencies, and production companies by film director Hank Orion." />
     <meta property="og:url" content="https://hankorion.com/commercial/" />
     <meta property="og:image" content="https://hankorion.com/og.jpg" />
+    <meta property="og:site_name" content="Hank Orion" />
 
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -33,16 +36,49 @@
         }
       })();
     </script>
+
     <script type="application/ld+json" id="schema-static">
       {
         "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "Commercial Work",
-        "url": "https://hankorion.com/commercial/"
+        "@graph": [
+          {
+            "@type": "CollectionPage",
+            "name": "Commercial Films by Hank Orion",
+            "url": "https://hankorion.com/commercial/",
+            "description": "Commercial work for brands, agencies, and production companies.",
+            "publisher": {
+              "@id": "https://hankorion.com/#person"
+            }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://hankorion.com/#person",
+            "name": "Hank Orion",
+            "url": "https://hankorion.com/"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://hankorion.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Commercial",
+                "item": "https://hankorion.com/commercial/"
+              }
+            ]
+          }
+        ]
       }
     </script>
     <script type="application/ld+json" id="schema-dynamic"></script>
   </head>
+
   <body>
     <div id="app"></div>
     <script type="module" src="/src/entries/commercial.js"></script>

@@ -4,18 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>About | Filmmaker Portfolio</title>
+    <title>About Hank Orion | Film Director & Screenwriter Bio | London, Kyoto</title>
     <meta
       name="description"
-      content="About the filmmaker, approach, awards, and credits. Based in London and available worldwide."
+      content="Learn about Hank Orion, award-winning film director, screenwriter, and producer based between London and Kyoto. Bio, approach, awards, credits, and availability for narrative and commercial projects."
     />
     <link rel="canonical" href="https://hankorion.com/about/" />
+    <meta name="robots" content="index, follow" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="About | Filmmaker Portfolio" />
-    <meta property="og:description" content="Bio, approach, awards, and credits." />
+    <meta property="og:title" content="About Hank Orion | Film Director & Screenwriter" />
+    <meta property="og:description" content="Learn about award-winning film director Hank Orion. Bio, approach, awards, and credits." />
     <meta property="og:url" content="https://hankorion.com/about/" />
     <meta property="og:image" content="https://hankorion.com/og.jpg" />
+    <meta property="og:site_name" content="Hank Orion" />
 
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -38,9 +40,39 @@
     <script type="application/ld+json" id="schema-static">
       {
         "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "name": "About",
-        "url": "https://hankorion.com/about/"
+        "@graph": [
+          {
+            "@type": "AboutPage",
+            "name": "About Hank Orion",
+            "url": "https://hankorion.com/about/",
+            "publisher": {
+              "@id": "https://hankorion.com/#person"
+            }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://hankorion.com/#person",
+            "name": "Hank Orion",
+            "url": "https://hankorion.com/"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://hankorion.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About",
+                "item": "https://hankorion.com/about/"
+              }
+            ]
+          }
+        ]
       }
     </script>
     <script type="application/ld+json" id="schema-dynamic"></script>

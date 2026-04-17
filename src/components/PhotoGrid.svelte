@@ -40,7 +40,7 @@
 
   function watch(e) {
     e.stopPropagation();
-    window.open(`/watch/?v=${selected.slug}`, '_blank');
+    window.open(`/watch/?v=${selected.slug}`, '_blank', 'noopener,noreferrer');
   }
 
   function onKey(e) {
