@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import Layout from '../components/Layout.svelte';
-  import { setDynamicSchema, siteUrl } from '../components/seo';
+  import { personSchema, setDynamicSchema, siteUrl, websiteSchema } from '../components/seo';
 
   import site from '../data/site.json';
   import commercial from '../data/commercial.json';
@@ -22,12 +22,18 @@
   onMount(() => {
     setDynamicSchema({
       '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: site.name,
-      jobTitle: site.tagline,
-      url: siteUrl('/about/'),
-      email: site.email ? `mailto:${site.email}` : undefined,
-      sameAs: Object.values(site.social || {}).filter(Boolean)
+      '@graph': [
+        websiteSchema(),
+        personSchema(),
+        {
+          '@type': 'AboutPage',
+          '@id': `${siteUrl('/about/')}#webpage`,
+          name: 'About Hank Orion',
+          url: siteUrl('/about/'),
+          isPartOf: { '@id': siteUrl('/#website') },
+          mainEntity: { '@id': siteUrl('/#person') }
+        }
+      ]
     });
   });
 </script>
@@ -83,6 +89,39 @@
   .copy p{color:var(--muted); font-weight:450; max-width:62ch;}
   .copy a{color:var(--text); text-decoration:underline;}
 
+  .contactLine{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+  }
+
+  .contactLine .btn{
+    min-width:118px;
+    height:42px;
+    padding:0 18px;
+    border:1px solid #000;
+    border-radius:6px;
+    background:#000;
+    color:#fff;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:650;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    transition:background 160ms ease, color 160ms ease, transform 160ms ease, opacity 160ms ease;
+  }
+
+  .contactLine .btn:hover{
+    opacity:1;
+    background:transparent;
+    color:#000;
+  }
+
+  .contactLine .btn:active{
+    transform:translateY(1px);
+  }
+
   .spacer{height:48px;}
 
   .yearGroup{margin-bottom:24px;}
@@ -103,6 +142,12 @@
   .sectionTitle{font-size:20px; margin-bottom:20px;}
 
   @media(max-width: 640px){
+    .contactLine{justify-content:center;}
+    .contactLine .btn{
+      flex:1 1 0;
+      min-width:0;
+      max-width:160px;
+    }
     .row{flex-direction:column; gap:4px;}
     .proj{min-width:auto;}
     .spacer{height:32px;}

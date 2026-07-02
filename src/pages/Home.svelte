@@ -5,7 +5,7 @@
   import VideoModal from '../components/VideoModal.svelte';
 
   import { embedUrl } from '../components/video';
-  import { setDynamicSchema, siteUrl } from '../components/seo';
+  import { itemListSchema, personSchema, setDynamicSchema, videoSchema, websiteSchema } from '../components/seo';
 
   import site from '../data/site.json';
   import narrative from '../data/narrative.json';
@@ -39,28 +39,14 @@
   }
 
   onMount(() => {
-    const videoObjects = featured.map((v) => ({
-      '@type': 'VideoObject',
-      name: v.title,
-      description: v.description || `${v.title} video.`,
-      thumbnailUrl: [siteUrl(v.thumbnail)],
-      embedUrl: embedUrl(v),
-      uploadDate: v.year ? `${v.year}-01-01` : undefined
-    }));
+    const videoObjects = featured.map((v) => videoSchema(v, '/')).filter(Boolean);
 
     setDynamicSchema({
       '@context': 'https://schema.org',
       '@graph': [
-        {
-          '@type': 'ItemList',
-          name: 'Selected Work',
-          itemListElement: featured.map((v, idx) => ({
-            '@type': 'ListItem',
-            position: idx + 1,
-            name: v.title,
-            url: siteUrl('/')
-          }))
-        },
+        websiteSchema(),
+        personSchema(),
+        itemListSchema('Selected Work by Hank Orion', featured, '/'),
         ...videoObjects
       ]
     });
@@ -69,7 +55,10 @@
 
 <Layout active="/" title={site.name} subtitle={site.tagline}>
   <div class="profileImg">
-    <img src="/og.jpg" alt="Profile" />
+    <picture>
+      <source media="(max-width: 1024px)" srcset="/og-mobile.jpg" />
+      <img src="/og.jpg" alt="Profile" />
+    </picture>
   </div>
 
   <section class="hero">
@@ -141,8 +130,6 @@
   .reelMeta{margin-top:12px;}
   .reelTitle{font-weight:600; font-size:16px;}
 
-  .sectionHead{display:flex; justify-content:space-between; align-items:flex-end; gap:14px; margin-bottom:12px;}
-
   .spacer{height:28px;}
 
   .profileImg{margin-bottom:28px;}
@@ -151,7 +138,11 @@
   @media(max-width: 1024px){
     .hero{grid-template-columns: 1fr;}
     .profileImg{display:block; margin-bottom:20px;}
-    .profileImg img{width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px;}
+    .profileImg img{width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:12px;}
     .spacer{height:20px;}
+  }
+
+  @media(max-width: 600px){
+    .profileImg img{aspect-ratio:3/4;}
   }
 </style>

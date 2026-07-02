@@ -1,4 +1,5 @@
 <script>
+  import { onDestroy } from 'svelte';
   import ThemeToggle from './ThemeToggle.svelte';
   import site from '../data/site.json';
 
@@ -28,31 +29,28 @@
     if (e.key === 'Escape' && open) close();
   }
 
-  function handleBackdropClick(e) {
-    if (e.target === e.currentTarget) close();
+  $: if (open && typeof document !== 'undefined') {
+    document.body.classList.add('menu-open');
+  } else if (typeof document !== 'undefined') {
+    document.body.classList.remove('menu-open');
   }
+
+  onDestroy(() => {
+    document.body.classList.remove('menu-open');
+  });
 </script>
 
 <svelte:window on:keydown={handleKeydown} />
 
-<div class="themeCorner">
-  <ThemeToggle />
-</div>
-
 <header class="mobileTop">
-  <a class="mobileBrand" href="/" aria-label="Home">
+  <button class="mobileBrand" type="button" on:click={toggle} aria-label="Open menu" aria-expanded={open}>
     <div class="brandTitle">{title}</div>
     <div class="brandSub">
       {#each subtitle.split(' ') as word}
         <span>{word}</span>
       {/each}
     </div>
-  </a>
-  <div class="mobileControls">
-    <button class="burger" on:click={toggle} aria-label="Menu" aria-expanded={open}>
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+  </button>
 </header>
 
 <div class="shell">
@@ -75,6 +73,9 @@
     </nav>
 
     <div class="sidebarFoot">
+      <div class="desktopTheme">
+        <ThemeToggle />
+      </div>
       <div class="social">
         {#if site.social?.facebook}<a href={site.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">FB</a>{/if}
         {#if site.social?.instagram}<a href={site.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">IG</a>{/if}
@@ -86,10 +87,13 @@
   </aside>
 
   {#if open}
-    <div class="drawer" role="dialog" aria-modal="true" aria-label="Menu" on:click={handleBackdropClick}>
+    <div class="drawer" role="dialog" aria-modal="true" aria-label="Menu">
+      <button class="drawerBackdrop" type="button" aria-label="Close menu" on:click={close}></button>
       <div class="drawerInner">
         <div class="drawerTop">
-          <div></div>
+          <div class="drawerTheme">
+            <ThemeToggle />
+          </div>
           <button class="close" on:click={close} aria-label="Close">
             ✕
           </button>
@@ -134,13 +138,6 @@
     flex-direction:column;
     gap:26px;
     background:var(--bg);
-  }
-
-  .themeCorner{
-    position:fixed;
-    top:18px;
-    right:18px;
-    z-index:60;
   }
 
   .brandTitle{
@@ -191,7 +188,25 @@
 
   .nav a.selected{color:var(--text);}
 
-  .sidebarFoot{margin-top:auto; padding-top:18px;}
+  .sidebarFoot{
+    margin-top:auto;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+
+  .desktopTheme{
+    margin-bottom:14px;
+  }
+
+  .desktopTheme :global(.toggle),
+  .drawerTheme :global(.toggle){
+    width:38px;
+    height:38px;
+    border:1px solid var(--line);
+    background:transparent;
+    box-shadow:none;
+    font-size:18px;
+  }
 
   .social{display:flex; gap:10px; margin-bottom:8px;}
   .social a{
@@ -209,45 +224,43 @@
 
   .mobileTop{display:none;}
 
-  .burger{
-    width:46px;
-    height:46px;
-    border:0;
-    background:transparent;
-    border-radius:12px;
-    display:grid;
-    place-items:center;
-    padding:0;
-    cursor:pointer;
-  }
-
-  .burger span{
-    display:block;
-    width:22px;
-    height:3px;
-    background:var(--text);
-    border-radius:2px;
-  }
-
-  .burger span + span{margin-top:5px;}
-
   .drawer{
     position:fixed;
     inset:0;
-    background:var(--overlay);
+    height:100dvh;
+    overflow:hidden;
     backdrop-filter:saturate(160%) blur(10px);
     z-index:50;
   }
 
+  .drawerBackdrop{
+    position:absolute;
+    inset:0;
+    border:0;
+    padding:0;
+    background:var(--overlay);
+    cursor:default;
+  }
+
   .drawerInner{
+    position:relative;
+    z-index:1;
     max-width:520px;
     padding:26px;
-    height:100%;
+    height:100dvh;
+    overflow:hidden;
     display:flex;
     flex-direction:column;
   }
 
-  .drawerTop{display:flex; align-items:flex-start; gap:20px;}
+  .drawerTop{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:20px;
+  }
+
+  .drawerTheme{display:none;}
 
   .close{
     width:46px;
@@ -276,31 +289,113 @@
   .drawerFoot{margin-top:auto; padding-top:32px;}
   .drawerFoot .social{margin-bottom:12px;}
 
+  :global(body.menu-open){
+    overflow:hidden;
+  }
+
   @media (max-width: 1024px){
     .shell{grid-template-columns: 1fr;}
     .sidebar{display:none;}
-    .mobileControls{display:flex; gap:12px; align-items:center;}
     .mobileTop{
       display:flex;
-      justify-content:space-between;
+      justify-content:center;
       align-items:center;
-      padding:36px 18px;
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
+      position:static;
+      min-height:112px;
+      padding:calc(env(safe-area-inset-top, 0px) + 18px) 18px 18px;
+      box-sizing:border-box;
       background:var(--overlay);
       backdrop-filter:saturate(160%) blur(10px);
+      border-bottom:1px solid var(--line);
       z-index:40;
     }
     .mobileBrand{
-      position:absolute;
-      left:50%;
-      transform:translateX(-50%);
+      border:0;
+      padding:0;
+      background:transparent;
+      color:var(--text);
+      font:inherit;
+      text-align:center;
+      cursor:pointer;
+    }
+    .mobileBrand .brandTitle{
+      font-size:30px;
+      font-weight:640;
+      line-height:0.95;
+      letter-spacing:0.02em;
+    }
+    .mobileBrand .brandSub{
+      display:flex;
+      justify-content:center;
+      gap:6px;
+      font-size:10px;
+      letter-spacing:0.05em;
+      line-height:1.4;
+      white-space:nowrap;
+    }
+    .mobileBrand .brandSub span{
+      display:inline;
       text-align:center;
     }
-    .mobileBrand .brandTitle{font-size:22px;}
-    .mobileBrand .brandSub{font-size:12px;}
-    .main{padding-top:120px; padding:120px 18px 44px;}
+    .mobileBrand .brandSub span + span::before{
+      content:"|";
+      margin-right:6px;
+      opacity:0.45;
+    }
+    .drawer{
+      background:var(--bg);
+      backdrop-filter:none;
+    }
+    .drawerBackdrop{
+      background:var(--bg);
+    }
+    .drawerInner{
+      max-width:none;
+      width:100%;
+      padding:calc(env(safe-area-inset-top, 0px) + 22px) 24px calc(env(safe-area-inset-bottom, 0px) + 28px);
+      align-items:center;
+      text-align:center;
+    }
+    .drawerTop{
+      width:100%;
+      align-items:center;
+    }
+    .drawerTheme{display:block;}
+    .drawerNav{
+      flex:1;
+      justify-content:center;
+      align-items:center;
+      gap:18px;
+      width:100%;
+      margin:0;
+      padding:18px 0;
+    }
+    .drawerNav a{
+      font-size:clamp(28px, 10vw, 44px);
+      font-weight:620;
+      line-height:1;
+      letter-spacing:0.02em;
+      color:var(--text);
+    }
+    .drawerNav a.selected{
+      opacity:1;
+      color:var(--muted);
+    }
+    .drawerFoot{
+      width:100%;
+      margin-top:0;
+      padding-top:0;
+      border-top:1px solid var(--line);
+      padding-top:18px;
+    }
+    .drawerFoot .social{
+      justify-content:center;
+      gap:16px;
+      margin-bottom:12px;
+    }
+    .drawerFoot .small{
+      text-align:center;
+    }
+    .main{padding:18px 18px 44px;}
   }
 </style>

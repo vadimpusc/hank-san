@@ -3,32 +3,167 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://hankorion.com/</loc>
-    <priority>1.0</priority>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-04-17</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://hankorion.com/about/</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-04-17</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://hankorion.com/narrative/</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-04-17</lastmod>
+    <priority>0.9</priority>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/across.jpg</video:thumbnail_loc>
+      <video:title>Across Two Skies</video:title>
+      <video:description>Two lonely expats working late on a Friday night become accidentally locked out on their office fire escape. Stranded until morning, they share cigarettes, secrets, and stories, finding unexpected intimacy in the heart of a sleepless city.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/u6vaLpdJfK4</video:player_loc>
+      <video:publication_date>2025-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/chance.jpg</video:thumbnail_loc>
+      <video:title>Love by Chance Again</video:title>
+      <video:description>When his vanished first love reappears, a man on the brink of commitment is torn between memory and loyalty in a tender drama of love lost and love chosen.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/pEroSVbGGMs</video:player_loc>
+      <video:publication_date>2025-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/exposure.png</video:thumbnail_loc>
+      <video:title>Exposure</video:title>
+      <video:description>A photographer haunted by a mysterious figure in her images must face a deadly demon in a battle between worlds before it consumes her life and those she loves.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/esoPo1_Xf30</video:player_loc>
+      <video:publication_date>2025-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/napoleon.jpg</video:thumbnail_loc>
+      <video:title>Napoleon&apos;s Table</video:title>
+      <video:description>A meticulous history professor channels his obsession with Napoleon into a chilling dinner party, where secrets are weapons, and trust is a deadly gamble.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/B4is_vYmPjs</video:player_loc>
+      <video:publication_date>2025-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/outsiders.jpg</video:thumbnail_loc>
+      <video:title>Outsiders</video:title>
+      <video:description>A perfect weekend becomes a nightmare as a couple departs onto a journey to the remote forest in England.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/ZzkLdac9D4o</video:player_loc>
+      <video:publication_date>2025-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/cosmos.jpg</video:thumbnail_loc>
+      <video:title>Man of the Cosmos</video:title>
+      <video:description>An enigmatic celestial being must decide the fate of humanity after centuries of observation, exploring the triumphs, tragedies, and contradictions that define the human race in a heart-wrenching battle between hope and destruction.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/8vbFqqQTn_Q</video:player_loc>
+      <video:publication_date>2024-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/man.jpg</video:thumbnail_loc>
+      <video:title>The Man</video:title>
+      <video:description>The man who has nothing to lose anymore and sees no future ahead by chance meets a stranger that changes his mind.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/5jHqvcDG1R8</video:player_loc>
+      <video:publication_date>2024-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/following.jpg</video:thumbnail_loc>
+      <video:title>Following</video:title>
+      <video:description>When amateur photographer Anna decided to go for a walk and bring her camera along little did she know that her day would turn into a dark and twisted game.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/497NjUZA24I</video:player_loc>
+      <video:publication_date>2024-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/osaka.jpg</video:thumbnail_loc>
+      <video:title>Osaka</video:title>
+      <video:description>A lonely Japanese girl living in London grapples with a profound sense of disconnection. She embarks on a journey of self-discovery determined to find her way out of the metaphorical maze.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/1M99AoOmQWo</video:player_loc>
+      <video:publication_date>2023-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/spooked.jpg</video:thumbnail_loc>
+      <video:title>Spooked</video:title>
+      <video:description>When old friends and loved ones resurface just as a filmmaker is set to debut his film at a renowned European film festival, he must confront the true value of his past relationships and determine what he values most.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/A6H6I50qQWE</video:player_loc>
+      <video:publication_date>2022-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/love.jpg</video:thumbnail_loc>
+      <video:title>Love in the City</video:title>
+      <video:description>Two polar opposites, brought together on a chaotic blind date in the heart of London, unexpectedly fall for each other despite their differences.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/9aPHx_tUzUk</video:player_loc>
+      <video:publication_date>2022-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/ritual.jpg</video:thumbnail_loc>
+      <video:title>The Ritual</video:title>
+      <video:description>Jack, a young actor facing a tough luck in his acting career decides to sell his soul to the devil in exchange for fame and success.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/QcSzzsk9XK0</video:player_loc>
+      <video:publication_date>2021-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/honey.jpg</video:thumbnail_loc>
+      <video:title>Honey and Wine</video:title>
+      <video:description>Steve, who is stuck in a corporate loophole, while a business trip he meets Amanda, an escort worker that has more to her than just the look, the drive and the sexuality.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/uAaWQvBqqUo</video:player_loc>
+      <video:publication_date>2020-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/job.jpg</video:thumbnail_loc>
+      <video:title>The Job</video:title>
+      <video:description>When five robbers robbed a bank, they thought that the robbery itself was the hardest part of the job, but soon they came to realize that one of them decided to be smart and play a double game.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/57u-3gE5130</video:player_loc>
+      <video:publication_date>2017-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://hankorion.com/stills/despair.jpg</video:thumbnail_loc>
+      <video:title>Despair</video:title>
+      <video:description>After Jack and Lucy rescue a woman from freezing cold in the Scottish mountains, they gradually realise that she is not who she says she is and her intentions are unclear.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/t15pLMzf-Wc</video:player_loc>
+      <video:publication_date>2017-01-01</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:uploader info="https://hankorion.com/">Hank Orion</video:uploader>
+    </video:video>
   </url>
   <url>
     <loc>https://hankorion.com/commercial/</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-04-17</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://hankorion.com/contact/</loc>
-    <priority>0.6</priority>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-04-17</lastmod>
+    <priority>0.6</priority>
   </url>
 </urlset>

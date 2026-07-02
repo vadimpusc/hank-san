@@ -1,5 +1,5 @@
 export function embedUrl(item) {
-  if (!item) return '';
+  if (!item?.id) return '';
   return `https://www.youtube-nocookie.com/embed/${item.id}?rel=0&modestbranding=1`;
 }
 

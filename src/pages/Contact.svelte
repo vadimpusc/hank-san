@@ -1,25 +1,30 @@
 <script>
   import { onMount } from 'svelte';
   import Layout from '../components/Layout.svelte';
-  import { setDynamicSchema, siteUrl } from '../components/seo';
+  import { personSchema, setDynamicSchema, siteUrl, websiteSchema } from '../components/seo';
   import site from '../data/site.json';
 
   onMount(() => {
     setDynamicSchema({
       '@context': 'https://schema.org',
       '@graph': [
+        websiteSchema(),
+        personSchema(),
         {
           '@type': 'ContactPage',
+          '@id': `${siteUrl('/contact/')}#webpage`,
           name: 'Contact',
-          url: siteUrl('/contact/')
+          url: siteUrl('/contact/'),
+          isPartOf: { '@id': siteUrl('/#website') },
+          mainEntity: { '@id': siteUrl('/#person') }
         },
         {
-          '@type': 'Person',
-          name: site.name,
-          jobTitle: site.tagline,
+          '@type': 'ContactPoint',
+          '@id': `${siteUrl('/contact/')}#contact-point`,
+          contactType: 'Bookings and production enquiries',
+          email: site.email,
           url: siteUrl('/'),
-          email: site.email ? `mailto:${site.email}` : undefined,
-          sameAs: Object.values(site.social || {}).filter(Boolean)
+          availableLanguage: ['en']
         }
       ]
     });

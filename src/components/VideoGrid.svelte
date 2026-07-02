@@ -7,16 +7,17 @@
 
 <div class="grid" role="list">
   {#each items as item (item.slug)}
-    <button 
-      class="tile" 
-      type="button" 
-      role="listitem" 
-      on:click={() => onPick(item)}
-      aria-label={item.title}
-    >
-      <img src={getThumbnail(item)} alt={item.title} loading="lazy" />
-      <div class="title-overlay">{item.title}</div>
-    </button>
+    <div class="gridItem" role="listitem">
+      <button
+        class="tile"
+        type="button"
+        on:click={() => onPick(item)}
+        aria-label={item.title}
+      >
+        <img src={getThumbnail(item)} alt={item.title} loading="lazy" />
+        <div class="title-overlay">{item.title}</div>
+      </button>
+    </div>
   {/each}
 </div>
 
@@ -27,7 +28,12 @@
     gap:6px;
   }
 
+  .gridItem{min-width:0;}
+
   .tile{
+    display:block;
+    width:100%;
+    height:100%;
     border:0;
     padding:0;
     background:transparent;
@@ -35,6 +41,7 @@
     border-radius:12px;
     overflow:hidden;
     position:relative;
+    transform:translateZ(0);
   }
 
   .tile img{
@@ -55,7 +62,7 @@
     left:0;
     right:0;
     padding:12px;
-    background:linear-gradient(transparent, rgba(0,0,0,0.8));
+    background:linear-gradient(transparent, rgba(0,0,0,0.78));
     color:#fff;
     font-size:15px;
     font-weight:600;
@@ -65,10 +72,17 @@
   }
 
   @media (max-width: 900px){
-    .grid{grid-template-columns:repeat(2,1fr);}
-  }
-
-  @media (max-width: 600px){
-    .grid{grid-template-columns:1fr;}
+    .grid{
+      grid-template-columns:repeat(2,1fr);
+      gap:8px;
+    }
+    .tile{border-radius:8px;}
+    .title-overlay{
+      padding:28px 7px 8px;
+      font-size:11px;
+      line-height:1.15;
+      letter-spacing:0.04em;
+      background:linear-gradient(transparent 0%, rgba(0,0,0,0.18) 34%, rgba(0,0,0,0.84) 100%);
+    }
   }
 </style>

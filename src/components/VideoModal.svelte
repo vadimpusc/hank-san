@@ -1,10 +1,49 @@
 <script>
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount, onDestroy, tick } from 'svelte';
   import { embedUrl } from './video';
 
   export let item;
   export let open = false;
   export let onClose = () => {};
+
+  let backdrop;
+
+  function sameText(a, b) {
+    return String(a || '').trim().toLowerCase() === String(b || '').trim().toLowerCase();
+  }
+
+  function formatCredit(credit, director) {
+    if (sameText(credit, 'director')) return `Directed by ${director}`;
+    return `${credit} ${director}`;
+  }
+
+  function uniqueMetadata(item) {
+    if (!item) return [];
+
+    const values = [];
+
+    if (item.credit && item.director) {
+      values.push(formatCredit(item.credit, item.director));
+    } else {
+      if (item.credit) values.push(item.credit);
+      if (item.director) values.push(`dir. ${item.director}`);
+    }
+
+    if (item.client && !sameText(item.client, item.title)) values.push(item.client);
+    if (item.prodCompany && !sameText(item.prodCompany, item.title) && !sameText(item.prodCompany, item.client)) {
+      values.push(item.prodCompany);
+    }
+    if (item.year) values.push(item.year);
+    if (item.genre) values.push(item.genre);
+
+    const seen = new Set();
+    return values.filter((value) => {
+      const key = String(value).trim().toLowerCase();
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
 
   function close() {
     onClose();
@@ -14,13 +53,20 @@
     if (e.key === 'Escape') close();
   }
 
-  function hideAddressBar() {
-    setTimeout(() => {
-      window.scrollTo(0, 1);
-    }, 100);
+  async function prepareModal() {
+    await tick();
+    if (!open) return;
+    backdrop?.scrollTo({ top: 0 });
+    document.body.classList.add('modal-open');
   }
 
-  $: if (open) hideAddressBar();
+  $: if (open) {
+    prepareModal();
+  } else if (typeof document !== 'undefined') {
+    document.body.classList.remove('modal-open');
+  }
+
+  $: metadata = uniqueMetadata(item);
 
   onMount(() => {
     window.addEventListener('keydown', onKey);
@@ -28,23 +74,25 @@
 
   onDestroy(() => {
     window.removeEventListener('keydown', onKey);
+    document.body.classList.remove('modal-open');
   });
 </script>
 
 {#if open}
-  <div class="backdrop" role="dialog" aria-modal="true" aria-label="Video" on:click={close}>
-    <div class="panel" on:click|stopPropagation>
+  <div bind:this={backdrop} class="backdrop" role="dialog" aria-modal="true" aria-label="Video">
+    <button class="backdropDismiss" type="button" aria-label="Close video" on:click={close}></button>
+    <div class="panel">
       <div class="top">
         <div class="meta">
           <div class="title">{item.title}</div>
-          <div class="sub">
-            {#if item.credit}<span>{item.credit}.</span>{/if}
-            {#if item.director}<span>dir. {item.director}</span>{/if}
-            {#if item.client}<span class="dot">•</span><span>{item.client}</span>{/if}
-            {#if item.prodCompany}<span class="dot">•</span><span>{item.prodCompany}</span>{/if}
-            {#if item.year}<span class="dot">•</span><span>{item.year}</span>{/if}
-            {#if item.genre}<span class="dot">•</span><span>{item.genre}</span>{/if}
-          </div>
+          {#if metadata.length}
+            <div class="sub">
+              {#each metadata as value, index}
+                {#if index > 0}<span class="dot">•</span>{/if}
+                <span>{value}</span>
+              {/each}
+            </div>
+          {/if}
         </div>
         <button class="x" on:click={close} aria-label="Close">Close</button>
       </div>
@@ -86,15 +134,28 @@
   .backdrop{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.45);
     z-index:80;
     display:flex;
     align-items:center;
     justify-content:center;
     padding:18px;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .backdropDismiss{
+    position:fixed;
+    inset:0;
+    border:0;
+    padding:0;
+    background:rgba(0,0,0,0.45);
+    cursor:default;
   }
 
   .panel{
+    position:relative;
+    z-index:1;
     width:min(90vw, 1400px);
     background:var(--panel);
     border-radius:18px;
@@ -106,13 +167,27 @@
     display:flex;
     align-items:flex-start;
     justify-content:space-between;
-    gap:16px;
-    padding:16px 16px 10px;
+    gap:24px;
+    padding:24px 24px 16px;
   }
 
-  .title{font-weight:620; font-size:22px;}
-  .muted{color:var(--muted); font-weight:520;}
-  .sub{margin-top:4px; color:var(--muted); font-size:13px; font-weight:500;}
+  .meta{min-width:0;}
+  .title{
+    font-weight:650;
+    font-size:clamp(30px, 3vw, 52px);
+    line-height:1.04;
+    letter-spacing:0;
+  }
+  .sub{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0;
+    margin-top:10px;
+    color:var(--muted);
+    font-size:14px;
+    font-weight:500;
+    line-height:1.45;
+  }
   .dot{margin:0 6px;}
 
   .x{
@@ -128,7 +203,7 @@
     text-decoration-thickness:1px;
   }
 
-  .content{display:flex; gap:16px; padding:0 16px; align-items:center;}
+  .content{display:flex; gap:16px; padding:0 24px; align-items:center;}
 
   .poster{flex:0 0 28%;}
   .poster img{width:100%; border-radius:8px; object-fit:cover; aspect-ratio:2/3;}
@@ -146,16 +221,86 @@
 
   .placeholder{width:100%; height:100%; object-fit:cover;}
 
-  .desc{padding:14px 16px 12px; color:var(--muted); font-size:15px; margin:0;}
+  .desc{padding:18px 24px 12px; color:var(--muted); font-size:15px; margin:0;}
 
-  .links{display:flex; gap:10px; padding:0 16px 18px;}
+  .links{display:flex; gap:10px; padding:0 24px 24px;}
+
+  .links .btn{
+    min-width:118px;
+    height:42px;
+    padding:0 18px;
+    border:1px solid #000;
+    border-radius:6px;
+    background:#000;
+    color:#fff;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:650;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    transition:background 160ms ease, color 160ms ease, transform 160ms ease, opacity 160ms ease;
+  }
+
+  .links .btn:hover{
+    opacity:1;
+    background:transparent;
+    color:#000;
+  }
+
+  .links .btn:active{
+    transform:translateY(1px);
+  }
+
+  :global(body.modal-open){
+    overflow:hidden;
+  }
 
   @media(max-width: 700px){
-    .backdrop{align-items:flex-start; padding-top:40px;}
-    .panel{max-height:calc(100vh - 60px); overflow-y:auto; -webkit-overflow-scrolling:touch;}
-    .panel::-webkit-scrollbar{display:none;}
-    .panel{scrollbar-width:none;}
-    .links{justify-content:center;}
+    .backdrop{
+      display:block;
+      padding:calc(env(safe-area-inset-top, 0px) + 12px) 12px calc(env(safe-area-inset-bottom, 0px) + 20px);
+    }
+    .panel{
+      width:100%;
+      border-radius:14px;
+      overflow:visible;
+    }
+    .top{
+      position:relative;
+      display:block;
+      padding:22px 48px 16px;
+      text-align:center;
+    }
+    .title{
+      font-size:clamp(28px, 9vw, 42px);
+      line-height:1.05;
+      font-weight:650;
+    }
+    .sub{
+      justify-content:center;
+      gap:2px 0;
+      margin-top:10px;
+      font-size:12px;
+      line-height:1.45;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+    }
+    .x{
+      position:absolute;
+      top:10px;
+      right:8px;
+      padding:8px 10px;
+      font-size:13px;
+    }
+    .links{
+      justify-content:center;
+      padding:2px 16px 22px;
+    }
+    .links .btn{
+      flex:1 1 0;
+      min-width:0;
+      max-width:160px;
+    }
     .content{flex-direction:column;}
     .poster{flex:none; width:100%; margin-bottom:12px;}
     .poster img{aspect-ratio:2/3; width:100%;}
