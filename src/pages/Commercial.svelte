@@ -12,6 +12,4 @@
   {intro}
   {items}
   pagePath="/commercial/"
-  showMarketLinks={true}
-  marketLinksIntro="Available for commercial and branded productions in Japan, the UK, and US-led international projects."
 />

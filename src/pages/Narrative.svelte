@@ -12,6 +12,4 @@
   {intro}
   {items}
   pagePath="/narrative/"
-  showMarketLinks={true}
-  marketLinksIntro="Available for narrative films and director-for-hire work in Japan, the UK, and international productions."
 />

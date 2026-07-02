@@ -3,7 +3,6 @@
   import Layout from './Layout.svelte';
   import { personSchema, setDynamicSchema, siteUrl, websiteSchema } from './seo';
   import site from '../data/site.json';
-  import { marketList } from '../data/markets';
 
   export let market;
 
@@ -72,18 +71,6 @@
       </article>
     {/each}
   </section>
-
-  <section class="markets">
-    <div>
-      <div class="kicker">Related Markets</div>
-      <p>Hank works from Kyoto with productions connected to Japan, the UK, the USA and wider international locations.</p>
-    </div>
-    <div class="marketLinks">
-      {#each marketList.filter(item => item.path !== market.path) as item}
-        <a class="btn secondary" href={item.path}>{item.label}</a>
-      {/each}
-    </div>
-  </section>
 </Layout>
 
 <style>
@@ -140,47 +127,10 @@
     font-weight:450;
   }
 
-  .markets{
-    margin-top:42px;
-    padding-top:24px;
-    border-top:1px solid var(--line);
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
-    gap:20px;
-  }
-
-  .markets p{
-    margin:8px 0 0;
-    max-width:58ch;
-    color:var(--muted);
-    font-weight:450;
-  }
-
-  .marketLinks{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:flex-end;
-    gap:10px;
-  }
-
-  .marketLinks .btn{
-    min-width:82px;
-  }
-
   @media(max-width:760px){
     .details{
       grid-template-columns:1fr;
       gap:18px;
-    }
-
-    .markets{
-      align-items:flex-start;
-      flex-direction:column;
-    }
-
-    .marketLinks{
-      justify-content:flex-start;
     }
   }
 </style>

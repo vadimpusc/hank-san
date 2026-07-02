@@ -1,7 +1,6 @@
 <script>
   import { onMount } from 'svelte';
   import Layout from '../components/Layout.svelte';
-  import MarketLinks from '../components/MarketLinks.svelte';
   import VideoGrid from '../components/VideoGrid.svelte';
   import VideoModal from '../components/VideoModal.svelte';
 
@@ -65,9 +64,9 @@
   <section class="hero">
     <div>
       <div class="kicker">Selected Work</div>
-      <h2>Writer-director for intimate stories and cinematic brand films.</h2>
+      <h2>Film director based in Kyoto, working across Japan, the UK, the USA and international productions.</h2>
       <p class="lead">
-        I make performance-led films with a controlled visual style, clear emotional stakes, and a calm, practical production process.
+        I direct narrative films, commercials and branded work with a focus on performance, atmosphere and cinematic storytelling.
       </p>
       <div class="cta">
         <a class="btn" href="/contact/">Hire / Availability</a>
@@ -86,16 +85,10 @@
         />
       </div>
       <div class="reelMeta">
-        <div class="reelTitle">{site.demoReel.title}</div>
         <div class="small">{site.demoReel.description}</div>
       </div>
     </div>
   </section>
-
-  <MarketLinks
-    title="Available For"
-    intro="Based in Kyoto and available for productions in Japan, the UK, and international work with US partners."
-  />
 
   <div class="spacer"></div>
 
@@ -138,7 +131,6 @@
   iframe{width:100%; height:100%; border:0;}
 
   .reelMeta{margin-top:12px;}
-  .reelTitle{font-weight:600; font-size:16px;}
 
   .spacer{height:28px;}
 

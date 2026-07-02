@@ -1,7 +1,6 @@
 <script>
   import { onMount } from 'svelte';
   import Layout from '../components/Layout.svelte';
-  import MarketLinks from '../components/MarketLinks.svelte';
   import { personSchema, setDynamicSchema, siteUrl, websiteSchema } from '../components/seo';
 
   import site from '../data/site.json';
@@ -42,20 +41,15 @@
 <Layout active="/about/" title={site.name} subtitle={site.tagline}>
   <section class="copy">
     <div class="kicker">About</div>
-    <h2>Story-first filmmaking, built for the realities of production.</h2>
+    <h2>Film director based in Kyoto, working across Japan and internationally.</h2>
     <p>
-      I'm Hank Orion, a writer, director and producer based in Kyoto, Japan, working across Japan, the UK and international productions.
+      I'm Hank Orion, a writer, director and producer based in Kyoto, Japan, working with Japanese and international productions across narrative film, commercials and branded content.
     </p>
     <p>
-      I work with producers, agencies, brands and artists on films that need strong performances,
-      a clear point of view, and images that serve the story instead of decorating it.
+      My work ranges from independent films to commercial projects, combining practical production experience with a strong focus on performance, atmosphere and visual storytelling.
     </p>
     <p>
-      I can come in early to shape an idea, write or refine the script, direct the shoot,
-      and help carry the piece through post with the original intent intact.
-    </p>
-    <p>
-      Available for narrative films, commercials, branded content and director-for-hire work.
+      Available for productions in Japan, the UK and worldwide.
     </p>
 
     <div class="contactLine">
@@ -63,11 +57,6 @@
       <a class="btn secondary" href={site.social?.imdb || '#'} target="_blank" rel="noreferrer">IMDb</a>
     </div>
   </section>
-
-  <MarketLinks
-    title="Markets"
-    intro="Available for productions in Japan, UK projects, and US-led work shooting internationally."
-  />
 
   <div class="spacer"></div>
 

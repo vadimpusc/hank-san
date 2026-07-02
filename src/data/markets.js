@@ -62,7 +62,7 @@ export const markets = {
     kicker: 'US Productions',
     lead: 'Hank Orion is available for US productions looking for a writer-director with Japan, UK and international production experience.',
     intro: [
-      'Hank is based in Kyoto, Japan, not Los Angeles or New York. For American producers, agencies and brands, he is best suited to projects that need an international director for shoots in Japan, the UK, Europe or across multiple markets.',
+      'Hank is based in Kyoto, Japan. For American producers, agencies and brands, he is best suited to projects that need an international director for shoots in Japan, the UK, Europe or across multiple markets.',
       'He works on narrative, independent, commercial, branded and online video projects where the story needs cinematic direction, grounded performances and a director who can work clearly across borders.'
     ],
     sections: [
@@ -71,8 +71,8 @@ export const markets = {
         body: 'Los Angeles and New York remain major creative and production hubs, and Hank is available to collaborate with US clients from those markets and beyond when a project needs Japan, UK or international directing experience.'
       },
       {
-        heading: 'International Direction Without False Local Claims',
-        body: 'The value is not a fake US base. The value is a director who can help American productions work confidently outside the US, especially on films, commercials and branded projects connected to Japan, Europe or the UK.'
+        heading: 'International Direction for US-Led Projects',
+        body: 'For productions working beyond the US, Hank brings a grounded directing approach, cross-cultural production awareness and experience across Japan, Europe and the UK.'
       }
     ],
     links: [

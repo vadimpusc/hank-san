@@ -1,7 +1,6 @@
 <script>
   import { onMount } from 'svelte';
   import Layout from '../components/Layout.svelte';
-  import MarketLinks from '../components/MarketLinks.svelte';
   import { personSchema, setDynamicSchema, siteUrl, websiteSchema } from '../components/seo';
   import site from '../data/site.json';
 
@@ -38,8 +37,7 @@
       <div class="kicker">Contact</div>
       <h2>Bookings, availability, and project enquiries.</h2>
       <p class="intro">
-        Send a short brief, the intended format, location, timeline and any links that help explain the job.
-        I reply quickly and can share relevant reels or full cuts on request.
+        Whether you're developing a feature film, short, commercial or branded project, I'd be happy to discuss how I can help bring it to life.
       </p>
 
       <div class="card">
@@ -64,10 +62,6 @@
     </div>
   </section>
 
-  <MarketLinks
-    title="Production Markets"
-    intro="For Japan, UK, or US-led international productions, include the market, location and intended shoot window in your enquiry."
-  />
 </Layout>
 
 <style>
