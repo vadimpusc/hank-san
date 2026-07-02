@@ -2,12 +2,13 @@
   import CategoryView from '../components/CategoryView.svelte';
   import items from '../data/commercial.json';
 
-  const heading = 'Commercial';
-  const intro = 'Commercial and branded work with story discipline: clear messaging, strong images, and a director who understands both the idea and the deadline.';
+  const heading = 'Commercial & Branded Work';
+  const intro = 'Selected commercial work across advertising, branded content and online campaigns.';
 </script>
 
 <CategoryView
   active="/commercial/"
+  kicker="Commercial"
   {heading}
   {intro}
   {items}

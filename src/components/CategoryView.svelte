@@ -9,6 +9,7 @@
 
   export let active = '';
   export let heading = '';
+  export let kicker = heading;
   export let intro = '';
   export let items = [];
   export let pagePath = '/';
@@ -52,7 +53,7 @@
 <Layout {active} title={site.name} subtitle={site.tagline}>
   <section class="top">
     <div>
-      <div class="kicker">{heading}</div>
+      <div class="kicker">{kicker}</div>
       <h2>{heading}</h2>
       <p class="intro">{intro}</p>
     </div>

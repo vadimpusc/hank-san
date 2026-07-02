@@ -97,7 +97,7 @@
         <button class="x" on:click={close} aria-label="Close">Close</button>
       </div>
 
-      <div class="content">
+      <div class:noPoster={!item.poster} class="content">
         {#if item.poster}
           <div class="poster">
             <img src={item.poster} alt="{item.title} poster" />
@@ -113,7 +113,9 @@
               loading="lazy"
             />
           {:else}
-            <img class="placeholder" src="/stills/placeholder.jpg" alt="No video available" />
+            <div class="placeholder" aria-label="No video available">
+              <span>Coming Soon</span>
+            </div>
           {/if}
         </div>
       </div>
@@ -136,7 +138,7 @@
     inset:0;
     z-index:80;
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     justify-content:center;
     padding:18px;
     overflow-y:auto;
@@ -205,6 +207,11 @@
 
   .content{display:flex; gap:16px; padding:0 24px; align-items:center;}
 
+  .content.noPoster{
+    max-width:980px;
+    margin:0 auto;
+  }
+
   .poster{flex:0 0 28%;}
   .poster img{width:100%; border-radius:8px; object-fit:cover; aspect-ratio:2/3;}
 
@@ -219,7 +226,21 @@
 
   iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
 
-  .placeholder{width:100%; height:100%; object-fit:cover;}
+  .placeholder{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0) 44%),
+      linear-gradient(180deg, #202020, #050505);
+    color:rgba(255,255,255,0.68);
+    font-size:12px;
+    font-weight:650;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+  }
 
   .desc{padding:18px 24px 12px; color:var(--muted); font-size:15px; margin:0;}
 
@@ -280,6 +301,7 @@
       max-width:160px;
     }
     .content{flex-direction:column;}
+    .content.noPoster{max-width:none;}
     .poster{flex:none; width:100%; margin-bottom:12px;}
     .poster img{aspect-ratio:2/3; width:100%;}
     .frame{flex:none;}
