@@ -6,9 +6,12 @@
 <Layout active="/404/" title={site.name} subtitle={site.tagline}>
   <div class="notFound">
     <h1>404</h1>
-    <p class="message">Page not found</p>
-    <p class="hint">The page you're looking for doesn't exist or has been moved.</p>
-    <a class="btn" href="/">Back to Home</a>
+    <p class="message">That page isn't here.</p>
+    <p class="hint">Start with the selected work, or get in touch if you were looking for a reel or project link.</p>
+    <div class="actions">
+      <a class="btn" href="/">Selected Work</a>
+      <a class="btn secondary" href="/contact/">Contact</a>
+    </div>
   </div>
 </Layout>
 
@@ -41,16 +44,12 @@
     margin-bottom:32px;
   }
 
-  .btn{
-    display:inline-block;
-    padding:14px 28px;
-    background:var(--text);
-    color:var(--bg);
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:600;
-    transition:opacity 0.2s;
+  .actions{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
   }
 
-  .btn:hover{opacity:0.85;}
+  .actions .btn{min-width:138px;}
 </style>

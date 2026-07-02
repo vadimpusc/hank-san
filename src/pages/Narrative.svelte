@@ -3,7 +3,7 @@
   import items from '../data/narrative.json';
 
   const heading = 'Narrative';
-  const intro = 'Narrative-driven work.';
+  const intro = 'Films built around character, atmosphere, and a clear emotional turn. My focus is performance, visual restraint, and stories that stay with the viewer after the cut.';
 </script>
 
 <CategoryView
@@ -12,4 +12,6 @@
   {intro}
   {items}
   pagePath="/narrative/"
+  showMarketLinks={true}
+  marketLinksIntro="Available for narrative films and director-for-hire work in Japan, the UK, and international productions."
 />

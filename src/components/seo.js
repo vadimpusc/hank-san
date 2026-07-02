@@ -24,7 +24,7 @@ export function personSchema() {
     name: site.name,
     url: siteUrl('/'),
     image: siteUrl('/og.jpg'),
-    description: 'Film director, screenwriter, and producer based between London and Kyoto.',
+    description: 'Writer, director, and producer based in Kyoto, Japan, working across narrative films, commercials, branded content, and international productions.',
     jobTitle: ['Film Director', 'Screenwriter', 'Producer'],
     email: site.email ? `mailto:${site.email}` : undefined,
     sameAs: Object.values(site.social || {}).filter(Boolean),

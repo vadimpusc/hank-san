@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import Layout from '../components/Layout.svelte';
+  import MarketLinks from '../components/MarketLinks.svelte';
   import { personSchema, setDynamicSchema, siteUrl, websiteSchema } from '../components/seo';
   import site from '../data/site.json';
 
@@ -35,9 +36,10 @@
   <section class="wrap">
     <div class="left">
       <div class="kicker">Contact</div>
-      <h2>Bookings, availability, and reels.</h2>
+      <h2>Bookings, availability, and project enquiries.</h2>
       <p class="intro">
-        For production enquiries, send a short brief and timelines. I reply quickly.
+        Send a short brief, the intended format, location, timeline and any links that help explain the job.
+        I reply quickly and can share relevant reels or full cuts on request.
       </p>
 
       <div class="card">
@@ -53,14 +55,19 @@
 
         <div class="label">Links</div>
         <div class="links">
-          {#if site.social?.facebook}<a href={site.social.facebook} target="_blank" rel="noreferrer">Facebook</a>{/if}
-          {#if site.social?.instagram}<a href={site.social.instagram} target="_blank" rel="noreferrer">Instagram</a>{/if}
-          {#if site.social?.youtube}<a href={site.social.youtube} target="_blank" rel="noreferrer">YouTube</a>{/if}
-          {#if site.social?.imdb}<a href={site.social.imdb} target="_blank" rel="noreferrer">IMDb</a>{/if}
+          {#if site.social?.facebook}<a class="btn secondary" href={site.social.facebook} target="_blank" rel="noreferrer">Facebook</a>{/if}
+          {#if site.social?.instagram}<a class="btn secondary" href={site.social.instagram} target="_blank" rel="noreferrer">Instagram</a>{/if}
+          {#if site.social?.youtube}<a class="btn secondary" href={site.social.youtube} target="_blank" rel="noreferrer">YouTube</a>{/if}
+          {#if site.social?.imdb}<a class="btn secondary" href={site.social.imdb} target="_blank" rel="noreferrer">IMDb</a>{/if}
         </div>
       </div>
     </div>
   </section>
+
+  <MarketLinks
+    title="Production Markets"
+    intro="For Japan, UK, or US-led international productions, include the market, location and intended shoot window in your enquiry."
+  />
 </Layout>
 
 <style>
@@ -78,8 +85,7 @@
   .label{font-size:12px; font-weight:520; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);}
   .value{font-size:18px; font-weight:600;}
 
-  .links{display:flex; flex-wrap:wrap; gap:12px; margin-top:8px;}
-  .links a{font-weight:520; text-decoration:underline; text-underline-offset:6px; text-decoration-thickness:1px;}
+  .links{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;}
 
   @media(max-width:1024px){
     .wrap{grid-template-columns:1fr;}

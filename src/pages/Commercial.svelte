@@ -3,7 +3,7 @@
   import items from '../data/commercial.json';
 
   const heading = 'Commercial';
-  const intro = 'Brand films, ads, and social campaigns. Built for clear messaging and strong craft.';
+  const intro = 'Commercial and branded work with story discipline: clear messaging, strong images, and a director who understands both the idea and the deadline.';
 </script>
 
 <CategoryView
@@ -12,4 +12,6 @@
   {intro}
   {items}
   pagePath="/commercial/"
+  showMarketLinks={true}
+  marketLinksIntro="Available for commercial and branded productions in Japan, the UK, and US-led international projects."
 />

@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import Layout from '../components/Layout.svelte';
+  import MarketLinks from '../components/MarketLinks.svelte';
   import VideoGrid from '../components/VideoGrid.svelte';
   import VideoModal from '../components/VideoModal.svelte';
 
@@ -64,12 +65,12 @@
   <section class="hero">
     <div>
       <div class="kicker">Selected Work</div>
-      <h2>Stories shaped through light, silence, and tension.</h2>
+      <h2>Writer-director for intimate stories and cinematic brand films.</h2>
       <p class="lead">
-        Exploring narrative, human connection, and cinematic atmosphere across film and commercial work.
+        I make performance-led films with a controlled visual style, clear emotional stakes, and a calm, practical production process.
       </p>
       <div class="cta">
-        <a class="btn" href="/contact/">Availability</a>
+        <a class="btn" href="/contact/">Hire / Availability</a>
         <a class="btn secondary" href="/about/">About</a>
       </div>
     </div>
@@ -91,10 +92,15 @@
     </div>
   </section>
 
+  <MarketLinks
+    title="Available For"
+    intro="Based in Kyoto and available for productions in Japan, the UK, and international work with US partners."
+  />
+
   <div class="spacer"></div>
 
   <section>
-      <h2>Recent Narrative & Commercial Work</h2>
+      <h2>Recent Film & Commercial Work</h2>
 
       <VideoGrid items={featured} onPick={pick} />
     </section>
@@ -116,6 +122,10 @@
   .lead{color:var(--muted); font-weight:450; max-width:56ch;}
 
   .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;}
+
+  .cta .btn{
+    min-width:142px;
+  }
 
   .reelFrame{
     width:100%;

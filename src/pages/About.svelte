@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import Layout from '../components/Layout.svelte';
+  import MarketLinks from '../components/MarketLinks.svelte';
   import { personSchema, setDynamicSchema, siteUrl, websiteSchema } from '../components/seo';
 
   import site from '../data/site.json';
@@ -41,16 +42,20 @@
 <Layout active="/about/" title={site.name} subtitle={site.tagline}>
   <section class="copy">
     <div class="kicker">About</div>
-    <h2>Story-first filmmaking with a premium finish.</h2>
+    <h2>Story-first filmmaking, built for the realities of production.</h2>
     <p>
-      I'm a writer, director and producer based between London and Kyoto.
+      I'm Hank Orion, a writer, director and producer based in Kyoto, Japan, working across Japan, the UK and international productions.
     </p>
     <p>
-      I collaborate with producers, brands, and artists to create work that feels crafted and human.
-      The goal is always the same: clarity, emotion, and images that support performance.
+      I work with producers, agencies, brands and artists on films that need strong performances,
+      a clear point of view, and images that serve the story instead of decorating it.
     </p>
     <p>
-      Available for narrative and commercials.
+      I can come in early to shape an idea, write or refine the script, direct the shoot,
+      and help carry the piece through post with the original intent intact.
+    </p>
+    <p>
+      Available for narrative films, commercials, branded content and director-for-hire work.
     </p>
 
     <div class="contactLine">
@@ -59,6 +64,10 @@
     </div>
   </section>
 
+  <MarketLinks
+    title="Markets"
+    intro="Available for productions in Japan, UK projects, and US-led work shooting internationally."
+  />
 
   <div class="spacer"></div>
 
@@ -87,7 +96,7 @@
 
 <style>
   .copy p{color:var(--muted); font-weight:450; max-width:62ch;}
-  .copy a{color:var(--text); text-decoration:underline;}
+  .copy a:not(.btn){color:var(--text); text-decoration:underline;}
 
   .contactLine{
     display:flex;
@@ -98,28 +107,6 @@
 
   .contactLine .btn{
     min-width:118px;
-    height:42px;
-    padding:0 18px;
-    border:1px solid #000;
-    border-radius:6px;
-    background:#000;
-    color:#fff;
-    text-decoration:none;
-    font-size:12px;
-    font-weight:650;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    transition:background 160ms ease, color 160ms ease, transform 160ms ease, opacity 160ms ease;
-  }
-
-  .contactLine .btn:hover{
-    opacity:1;
-    background:transparent;
-    color:#000;
-  }
-
-  .contactLine .btn:active{
-    transform:translateY(1px);
   }
 
   .spacer{height:48px;}

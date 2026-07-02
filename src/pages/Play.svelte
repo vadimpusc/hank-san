@@ -34,7 +34,7 @@
   });
 </script>
 
-<Layout active="" title="Hank Orion" subtitle="Director | Screenwriter | Producer">
+<Layout active="" title="Hank Orion" subtitle="Writer Director Producer">
   {#if item}
     <section class="player">
       <div class="title">{item.title}</div>

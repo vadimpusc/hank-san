@@ -2,6 +2,7 @@
   import { onDestroy } from 'svelte';
   import ThemeToggle from './ThemeToggle.svelte';
   import site from '../data/site.json';
+  import { marketList } from '../data/markets';
 
   export let active = '';
   export let title = '';
@@ -82,6 +83,11 @@
         {#if site.social?.youtube}<a href={site.social.youtube} target="_blank" rel="noreferrer" aria-label="YouTube">YT</a>{/if}
         {#if site.social?.imdb}<a href={site.social.imdb} target="_blank" rel="noreferrer" aria-label="IMDb">IMDb</a>{/if}
       </div>
+      <div class="marketFoot" aria-label="Production markets">
+        {#each marketList as market}
+          <a href={market.path}>{market.label}</a>
+        {/each}
+      </div>
       <div class="small"><a href="https://sanrokuku.com/" target="_blank" rel="noreferrer">Design by San Roku Ku</a></div>
     </div>
   </aside>
@@ -109,6 +115,11 @@
             {#if site.social?.instagram}<a href={site.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">IG</a>{/if}
             {#if site.social?.youtube}<a href={site.social.youtube} target="_blank" rel="noreferrer" aria-label="YouTube">YT</a>{/if}
             {#if site.social?.imdb}<a href={site.social.imdb} target="_blank" rel="noreferrer" aria-label="IMDb">IMDb</a>{/if}
+          </div>
+          <div class="marketFoot" aria-label="Production markets">
+            {#each marketList as market}
+              <a href={market.path}>{market.label}</a>
+            {/each}
           </div>
           <div class="small"><a href="https://sanrokuku.com/" target="_blank" rel="noreferrer">Design by San Roku Ku</a></div>
         </div>
@@ -217,6 +228,23 @@
     color:var(--muted);
   }
   .social a:hover{color:var(--text);}
+
+  .marketFoot{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:8px 0;
+  }
+
+  .marketFoot a{
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  .marketFoot a:hover{color:var(--text);}
 
   .main{
     padding:46px 44px;

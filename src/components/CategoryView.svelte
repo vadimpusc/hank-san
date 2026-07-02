@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import Layout from './Layout.svelte';
+  import MarketLinks from './MarketLinks.svelte';
   import VideoGrid from './VideoGrid.svelte';
   import VideoModal from './VideoModal.svelte';
   import { itemListSchema, personSchema, setDynamicSchema, siteUrl, videoSchema, websiteSchema } from './seo';
@@ -12,6 +13,8 @@
   export let intro = '';
   export let items = [];
   export let pagePath = '/';
+  export let showMarketLinks = false;
+  export let marketLinksIntro = 'Available for productions in Japan, the UK, and US-led international projects.';
 
   let picked = null;
   let modalOpen = false;
@@ -57,6 +60,13 @@
       <p class="intro">{intro}</p>
     </div>
   </section>
+
+  {#if showMarketLinks}
+    <MarketLinks
+      title="Production Markets"
+      intro={marketLinksIntro}
+    />
+  {/if}
 
   <VideoGrid {items} onPick={pick} />
 

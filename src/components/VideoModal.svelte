@@ -227,28 +227,6 @@
 
   .links .btn{
     min-width:118px;
-    height:42px;
-    padding:0 18px;
-    border:1px solid #000;
-    border-radius:6px;
-    background:#000;
-    color:#fff;
-    text-decoration:none;
-    font-size:12px;
-    font-weight:650;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    transition:background 160ms ease, color 160ms ease, transform 160ms ease, opacity 160ms ease;
-  }
-
-  .links .btn:hover{
-    opacity:1;
-    background:transparent;
-    color:#000;
-  }
-
-  .links .btn:active{
-    transform:translateY(1px);
   }
 
   :global(body.modal-open){
