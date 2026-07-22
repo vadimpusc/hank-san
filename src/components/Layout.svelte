@@ -14,6 +14,7 @@
     { label: 'About', href: '/about/' },
     { label: 'Narrative', href: '/narrative/' },
     { label: 'Commercial', href: '/commercial/' },
+    { label: 'Shop', href: 'https://shop.hankorion.com', external: true },
     { label: 'Contact', href: '/contact/' }
   ];
 
@@ -68,7 +69,12 @@
 
     <nav class="nav" aria-label="Primary">
       {#each nav as item}
-        <a class:selected={active === item.href} href={item.href}>{item.label}</a>
+        <a
+          class:selected={active === item.href}
+          href={item.href}
+          target={item.external ? '_blank' : undefined}
+          rel={item.external ? 'noopener noreferrer' : undefined}
+        >{item.label}</a>
       {/each}
     </nav>
 
@@ -100,7 +106,13 @@
         </div>
         <nav class="drawerNav" aria-label="Mobile">
           {#each nav as item}
-            <a class:selected={active === item.href} href={item.href} on:click={close}>{item.label}</a>
+            <a
+              class:selected={active === item.href}
+              href={item.href}
+              target={item.external ? '_blank' : undefined}
+              rel={item.external ? 'noopener noreferrer' : undefined}
+              on:click={close}
+            >{item.label}</a>
           {/each}
         </nav>
         <div class="drawerFoot">
