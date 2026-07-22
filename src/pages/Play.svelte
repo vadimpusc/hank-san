@@ -3,18 +3,15 @@
   import Layout from '../components/Layout.svelte';
   import { embedUrl } from '../components/video';
   import { setDynamicSchema, siteUrl } from '../components/seo';
-  import narrative from '../data/narrative.json';
-  import commercial from '../data/commercial.json';
+  import { allWork } from '../data/work';
 
-  const allItems = [...narrative, ...commercial];
-  
   let slug = '';
   let item = null;
 
   onMount(() => {
     const params = new URLSearchParams(window.location.search);
     slug = params.get('v') || '';
-    item = allItems.find(v => v.slug === slug);
+    item = allWork.find(v => v.slug === slug);
 
     if (item) {
       setDynamicSchema({

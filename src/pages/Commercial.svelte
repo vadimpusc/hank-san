@@ -1,6 +1,6 @@
 <script>
   import CategoryView from '../components/CategoryView.svelte';
-  import items from '../data/commercial.json';
+  import { commercialWork as items } from '../data/work';
 
   const heading = 'Commercial & Branded Work';
   const intro = 'Selected commercial work across advertising, branded content and online campaigns.';

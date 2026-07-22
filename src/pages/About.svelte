@@ -4,10 +4,9 @@
   import { personSchema, setDynamicSchema, siteUrl, websiteSchema } from '../components/seo';
 
   import site from '../data/site.json';
-  import commercial from '../data/commercial.json';
-  import narrative from '../data/narrative.json';
+  import { creditsWork } from '../data/work';
 
-  const credits = [...commercial, ...narrative].map(item => ({
+  const credits = creditsWork.map(item => ({
     project: item.title,
     role: item.credit,
     director: item.director,

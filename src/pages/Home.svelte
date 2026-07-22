@@ -8,8 +8,7 @@
   import { itemListSchema, personSchema, setDynamicSchema, videoSchema, websiteSchema } from '../components/seo';
 
   import site from '../data/site.json';
-  import narrative from '../data/narrative.json';
-  import commercial from '../data/commercial.json';
+  import { allWork } from '../data/work';
 
 
   function shuffleArray(arr) {
@@ -21,9 +20,8 @@
     return shuffled;
   }
 
-  const allItems = [...narrative, ...commercial];
-  const first = allItems[0];
-  const rest = shuffleArray(allItems.slice(1));
+  const first = allWork[0];
+  const rest = shuffleArray(allWork.slice(1));
   const featured = [first, ...rest].slice(0, 6);
 
   let picked = null;
